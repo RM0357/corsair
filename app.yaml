@@ -1,0 +1,30 @@
+version: '3'
+services:
+  postgres:
+    hostname: corsairdb
+    image: 'postgres:15.3-alpine3.18' # use latest official postgres version
+    ports:
+      - '5432:5432'
+    network_mode: bridge
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: db1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    # volumes:
+    #   - database_data:/var/lib/postgresql/data
+
+  myapp:
+    build: 
+      dockerfile: dockerfile
+      context: ./
+    container_name: myapp-container
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: corsairdb
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    network_mode: bridge
