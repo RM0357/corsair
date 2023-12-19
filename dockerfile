@@ -19,7 +19,7 @@ WORKDIR /app
 
 COPY --from=builder /app .
 
-EXPOSE 7500
+EXPOSE 7777
 #Default cant be overriden
 ENTRYPOINT [ "./main" ]
 #Comandline args which can be overriden

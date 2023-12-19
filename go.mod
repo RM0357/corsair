@@ -1,4 +1,4 @@
-module corsair.com
+module corsair
 
 go 1.19
 
