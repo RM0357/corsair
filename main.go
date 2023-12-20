@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getPrice(tf string, coin string) gin.HandlerFunc {
+func getCoinPrice(tf string, coin string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		url := "https://api-pub.bitfinex.com/v2/candles/trade:" + tf + ":" + coin + "/hist" // 5m,30m,1h,1d 90req/min tBTCUSD
 		req, err := http.NewRequest("GET", url, nil)
